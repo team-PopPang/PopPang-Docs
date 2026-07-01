@@ -1,0 +1,20 @@
+[
+  {
+    "text": "시작하기",
+    "link": "/guide/start/getting-started",
+    "activeMatch": "/guide/start/",
+    "position": "left"
+  },
+  {
+    "text": "튜토리얼",
+    "link": "/guide/use-mdx/components",
+    "activeMatch": "/guide/use-mdx/",
+    "position": "left"
+  },
+  {
+    "text": "API",
+    "link": "/api/",
+    "activeMatch": "/api/",
+    "position": "left"
+  }
+]
