@@ -3,6 +3,7 @@ import { defineConfig } from '@rspress/core';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
+  base: '/PopPang-Docs/',
   globalStyles: path.join(__dirname, 'theme/index.css'),
   lang: 'ko',
   title: '팝팡 개발자 가이드',
