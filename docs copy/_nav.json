@@ -1,7 +1,7 @@
 [
   {
     "text": "시작하기",
-    "link": "/guide/start/contributing",
+    "link": "/guide/start/getting-started",
     "activeMatch": "/guide/start/",
     "position": "left"
   },

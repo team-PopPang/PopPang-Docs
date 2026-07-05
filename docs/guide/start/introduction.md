@@ -1,15 +1,48 @@
-# Introduction
+---
+title: 팝팡 개발자 가이드 소개
+description: 팝팡 팀원이 제품과 개발 흐름을 빠르게 이해하고 같은 기준으로 일할 수 있게 정리한 문서 사이트 소개
+---
 
-Rspress is a static site generator based on [Rsbuild](https://rsbuild.rs/), rendered with the React framework. It comes with a default documentation theme, and you can quickly build a documentation site with Rspress.
+# 팝팡 개발자 가이드 소개
 
-## Why Rspress
+이 문서는 팝팡 팀을 위한 개발 문서 소개예요. 팀원이 제품 구조와 개발 흐름을 빠르게 이해하고, 필요한 기준을 바로 찾을 수 있도록 정리했어요.
 
-- **Build Performance**. The core compilation module is based on the Rust front-end toolchain, providing millisecond-level startup and a more ultimate development experience.
-- **AI-native**. Technical documentation not only serves human readers but can also be better understood and utilized by AI through SSG-MD.
-- **MDX Support**. MDX is a powerful way to write content, allowing you to use React components in Markdown.
-- **Basic Capabilities**. Including full-text search, internationalization, multi-version support, component library documentation, etc.
-- **Extensibility**. Provides a built-in plugin system, supports extending Rspress through plugin API.
+이 가이드는 단순히 문서를 모아둔 곳이 아니에요. 새 팀원이 온보딩할 때도, 기존 팀원이 기준을 다시 확인할 때도, 같은 내용을 반복해서 묻지 않도록 돕는 정제된 문서 모음이에요.
 
-## Try Rspress
+## 이 문서가 하는 일
 
-Go to [Getting Started](/guide/start/getting-started) to learn how to use Rspress to build a documentation site.
+- 팀원이 자주 찾는 개발 정보를 한곳에 모아요
+- 구현 기준과 작업 흐름을 같은 언어로 맞춰요
+- 온보딩 시간을 줄이고 반복 질문을 줄여요
+- 문서를 통해 팀의 합의와 맥락을 계속 이어가요
+
+## 이 문서가 필요한 이유
+
+팀 문서는 빠르게 찾을 수 있어야 해요. 읽는 사람이 지금 무엇을 해야 하는지 바로 이해할 수 있어야 하고, 오래된 설명이나 흩어진 메모 때문에 헷갈리지 않아야 해요.
+
+그래서 팝팡 개발자 가이드는 아래 기준으로 정리해요.
+
+- 팀원이 실제로 자주 쓰는 정보만 남겨요
+- 처음 보는 사람도 따라갈 수 있게 순서를 다듬어요
+- 용어와 표현을 문서 전반에서 일관되게 맞춰요
+- 구현 예시와 작업 기준을 문서 안에서 바로 확인할 수 있게 해요
+
+## 어떤 상황에서 보면 좋은가요
+
+- 새 팀원이 개발 환경과 기본 흐름을 익혀야 할 때
+- 기존 팀원이 작업 전에 기준 문서를 다시 확인할 때
+- 기능 구현 전에 관련 문서와 예시를 먼저 찾고 싶을 때
+- 팀 안에서 같은 표현과 같은 기준으로 소통하고 싶을 때
+
+## 문서를 읽는 방법
+
+먼저 `Getting Started`에서 기본 흐름을 확인하세요. 그다음 필요한 주제별 섹션으로 이동하면 돼요.
+
+- 시작이 필요하면 `Getting Started`
+- Flutter 문서가 필요하면 `Flutter`
+- MDX 작성 방법이 필요하면 `Markdown & MDX`
+- 명령어와 규칙을 찾고 싶다면 `API`
+
+## 다음 단계
+
+[문서 기여하기](/guide/start/contributing)부터 보면 문서 구조와 기본 사용 흐름을 빠르게 익힐 수 있어요.
