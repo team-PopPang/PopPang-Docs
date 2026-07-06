@@ -1,18 +1,8 @@
 :root {
   --rp-font-family-base:
-    "Inter var experimental",
-    "Inter var",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Fira Sans",
-    "Droid Sans",
-    "Helvetica Neue",
-    sans-serif;
+    'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   --rp-c-bg: #fff;
   --rp-c-bg-soft: #fff;
   --rp-c-bg-mute: #f8fafc;
@@ -144,6 +134,17 @@ body[data-show-sidebar-divider='true'] .rp-sidebar-menu {
   border-bottom: 1px solid var(--rp-c-divider-light);
 }
 
+html .rp-sidebar-item__left {
+  min-width: 0;
+}
+
+html .rp-sidebar-item__left .rp-doc {
+  display: block;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 html .pp-outline {
   border-left: 0;
   box-shadow: none;
@@ -211,11 +212,8 @@ html .pp-outline .rp-toc-item--active .rp-toc-item__text code {
   }
 
   html .rp-doc-layout__doc > .rp-doc-layout__doc-container {
-    padding:
-      var(--rp-content-padding-y)
-      var(--rp-content-padding-x)
-      var(--rp-content-padding-y)
-      28px;
+    padding: var(--rp-content-padding-y) var(--rp-content-padding-x)
+      var(--rp-content-padding-y) 28px;
   }
 }
 
@@ -229,7 +227,9 @@ html .pp-outline .rp-toc-item--active .rp-toc-item__text code {
   }
 }
 
-html .rp-doc :not(:where(.rp-not-doc, .rp-not-doc *)):where(h2:first-of-type):before {
+html
+  .rp-doc
+  :not(:where(.rp-not-doc, .rp-not-doc *)):where(h2:first-of-type):before {
   display: none;
 }
 
