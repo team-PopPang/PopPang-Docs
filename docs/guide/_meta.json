@@ -16,6 +16,11 @@
   },
   {
     "type": "dir-section-header",
+    "name": "dependencies",
+    "label": "Dependencies"
+  },
+  {
+    "type": "dir-section-header",
     "name": "server",
     "label": "팝팡 서버 관리"
   },
