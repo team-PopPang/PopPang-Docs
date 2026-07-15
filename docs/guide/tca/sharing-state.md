@@ -1,9 +1,9 @@
 ---
-title: 공유 상태
+title: Shared state
 description: TCA의 @Shared와 @SharedReader로 상태를 기능 간에 공유하고, 메모리·UserDefaults·파일 저장·테스트를 다루는 방법을 설명합니다.
 ---
 
-# 공유 상태
+# Shared state
 
 애플리케이션의 여러 부분에서 상태를 공유하는 방법과, 데이터를 사용자 기본값, 파일 시스템, 그 밖의 외부 매체에 저장하는 방법을 알아봐요.
 
