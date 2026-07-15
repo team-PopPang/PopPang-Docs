@@ -6,5 +6,6 @@
   "store",
   "effect",
   "sharing-state",
-  "testing"
+  "testing",
+  "performance"
 ]
