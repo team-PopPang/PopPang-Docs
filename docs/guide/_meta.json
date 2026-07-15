@@ -15,9 +15,11 @@
     "label": "TCA"
   },
   {
-    "type": "dir-section-header",
+    "type": "dir",
     "name": "dependencies",
-    "label": "Dependencies"
+    "label": "Dependencies",
+    "collapsible": true,
+    "collapsed": false
   },
   {
     "type": "dir-section-header",

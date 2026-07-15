@@ -1,5 +1,9 @@
 [
-  "overview",
+  {
+    "type": "file",
+    "name": "overview",
+    "label": "Overview"
+  },
   {
     "type": "section-header",
     "label": "Getting started"
