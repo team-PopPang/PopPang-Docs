@@ -15,13 +15,6 @@
     "label": "TCA"
   },
   {
-    "type": "dir",
-    "name": "dependencies",
-    "label": "Dependencies",
-    "collapsible": true,
-    "collapsed": false
-  },
-  {
     "type": "dir-section-header",
     "name": "server",
     "label": "팝팡 서버 관리"

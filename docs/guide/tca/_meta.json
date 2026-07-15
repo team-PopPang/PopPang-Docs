@@ -7,5 +7,12 @@
   "effect",
   "sharing-state",
   "testing",
-  "performance"
+  "performance",
+  {
+    "type": "dir",
+    "name": "dependencies",
+    "label": "Dependencies",
+    "collapsible": true,
+    "collapsed": true
+  }
 ]
