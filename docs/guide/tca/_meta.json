@@ -4,5 +4,6 @@
   "stack-based-navigation",
   "reducer",
   "store",
-  "effect"
+  "effect",
+  "sharing-state"
 ]
