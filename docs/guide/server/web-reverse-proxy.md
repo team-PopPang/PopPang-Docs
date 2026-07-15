@@ -199,7 +199,9 @@ sudo certbot --nginx -d web.poppang.co.kr
 
 ## 7. 최종 Nginx 설정 확인하기
 
-Certbot은 SSL 설정을 자동으로 추가할 수 있어요. 팀에서 아래 형태를 명시적으로 관리한다면 설정 파일을 열어 최종 상태를 확인하세요.
+Certbot은 기존 서버 블록을 인식해 TLS 설정을 추가할 수 있어요. 그래서 인증서 발급 전의 간단한 HTTP 설정과 최종 설정은 조금 달라질 수 있어요.
+
+현재 `web.poppang.co.kr` 서버에서 사용하는 최종 설정은 아래예요. Certbot이 관리한다고 표시한 줄도 함께 유지하세요. 짧은 예시로 바꾸면 Certbot의 TLS 권장 설정이 빠질 수 있어요.
 
 ```bash
 sudo nano /etc/nginx/sites-available/web.poppang.co.kr
@@ -208,36 +210,67 @@ sudo nano /etc/nginx/sites-available/web.poppang.co.kr
 인증서가 발급된 _뒤에만_ 아래 설정을 사용하세요. 아직 인증서가 없다면 `ssl_certificate` 경로가 존재하지 않아 `nginx -t`가 실패해요.
 
 ```nginx
+# ============================================================
+# web.poppang.co.kr HTTPS 서버
+# 외부 HTTPS 요청을 내부 앱 서버(127.0.0.1:3100)로 전달한다.
+# ============================================================
 server {
-    listen 80;
     server_name web.poppang.co.kr;
 
-    return 301 https://$host$request_uri;
-}
-
-server {
-    listen 443 ssl;
-    server_name web.poppang.co.kr;
-
-    ssl_certificate /etc/letsencrypt/live/web.poppang.co.kr/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/web.poppang.co.kr/privkey.pem;
-
+    # 모든 요청을 로컬의 웹 애플리케이션으로 reverse proxy
     location / {
         proxy_pass http://127.0.0.1:3100;
+
+        # WebSocket / keep-alive 등의 HTTP/1.1 연결을 유지
         proxy_http_version 1.1;
 
+        # 앱 서버가 원래 요청의 도메인·IP·프로토콜을 알 수 있게 전달
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $host;
 
+        # 스트리밍 응답 등이 즉시 전달되도록 Nginx 버퍼링 비활성화
         proxy_buffering off;
     }
+
+    # HTTPS(443) 수신 및 Let's Encrypt 인증서 설정
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/web.poppang.co.kr/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/web.poppang.co.kr/privkey.pem; # managed by Certbot
+
+    # Certbot이 제공하는 권장 TLS 보안 옵션
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+# ============================================================
+# HTTP(80) 요청 처리
+# web.poppang.co.kr로 들어온 HTTP 요청을 HTTPS로 영구 이동한다.
+# ============================================================
+server {
+    # 이 도메인으로 들어온 요청만 HTTPS로 301 리디렉션
+    if ($host = web.poppang.co.kr) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    server_name web.poppang.co.kr;
+
+    # 일치하지 않는 Host 요청은 응답하지 않음
+    return 404; # managed by Certbot
 }
 ```
 
-HTTP용 `server` 블록은 같은 경로와 쿼리 문자열을 유지한 채 HTTPS로 `301` 리디렉션해요. HTTPS용 `server` 블록만 `127.0.0.1:3100`으로 프록시해요.
+| 설정                                              | 역할                                                                                                            |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `include /etc/letsencrypt/options-ssl-nginx.conf` | Certbot이 제공하는 TLS 프로토콜과 암호화 관련 권장 설정을 불러와요.                                             |
+| `ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem`   | Certbot이 만든 Diffie-Hellman 파라미터를 TLS 설정에 사용해요.                                                   |
+| `if ($host = web.poppang.co.kr)`                  | 요청 `Host`가 정확히 `web.poppang.co.kr`일 때만 같은 경로와 쿼리 문자열을 유지한 채 HTTPS로 `301` 리디렉션해요. |
+| `return 404`                                      | 이 HTTP 서버 블록에 들어왔지만 도메인이 일치하지 않는 요청에는 `404`를 반환해요.                                |
+
+HTTPS용 `server` 블록만 `127.0.0.1:3100`으로 프록시해요. `# managed by Certbot`이라고 표시된 줄은 Certbot이 추가하거나 관리한 부분이므로, 인증서를 다시 발급하거나 설정을 수정할 때 지우지 마세요.
 
 ## 8. 최종 반영과 확인
 
