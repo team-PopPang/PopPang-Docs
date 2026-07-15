@@ -11,6 +11,11 @@
   },
   {
     "type": "dir-section-header",
+    "name": "tca",
+    "label": "TCA"
+  },
+  {
+    "type": "dir-section-header",
     "name": "use-mdx",
     "label": "Markdown & MDX"
   }
