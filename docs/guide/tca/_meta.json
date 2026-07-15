@@ -1,1 +1,6 @@
-["tree-based-navigation", "stack-based-navigation"]
+[
+  "what-is-navigation",
+  "tree-based-navigation",
+  "stack-based-navigation",
+  "reducer"
+]
