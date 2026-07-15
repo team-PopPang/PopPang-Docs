@@ -6,8 +6,8 @@
   },
   {
     "type": "dir-section-header",
-    "name": "flutter",
-    "label": "Flutter"
+    "name": "react-native",
+    "label": "React Native"
   },
   {
     "type": "dir-section-header",
