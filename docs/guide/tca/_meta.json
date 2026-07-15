@@ -1,4 +1,9 @@
 [
+  {
+    "type": "file",
+    "name": "readme",
+    "label": "README"
+  },
   "what-is-navigation",
   "tree-based-navigation",
   "stack-based-navigation",
