@@ -16,6 +16,11 @@
   },
   {
     "type": "dir-section-header",
+    "name": "server",
+    "label": "팝팡 서버 관리"
+  },
+  {
+    "type": "dir-section-header",
     "name": "use-mdx",
     "label": "Markdown & MDX"
   }

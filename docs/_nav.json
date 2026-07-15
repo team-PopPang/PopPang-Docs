@@ -18,6 +18,12 @@
     "position": "left"
   },
   {
+    "text": "서버 관리",
+    "link": "/guide/server/web-reverse-proxy",
+    "activeMatch": "/guide/server/",
+    "position": "left"
+  },
+  {
     "text": "API",
     "link": "/api/",
     "activeMatch": "/api/",
