@@ -2,5 +2,7 @@
   "what-is-navigation",
   "tree-based-navigation",
   "stack-based-navigation",
-  "reducer"
+  "reducer",
+  "store",
+  "effect"
 ]
